@@ -105,7 +105,20 @@
 
   &_categories{
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
+    overflow-x: auto;
+    padding: .1rem;
+
+    .category_title{
+      padding: .5rem;
+      background-color: chocolate;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 5px;
+    }
   }
 }
 
