@@ -77,6 +77,51 @@
   &_notes {
     grid-column-start: 2;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    
+    &_card{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+
+      .card_title{
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      .card_category{
+        &_span{
+          font-weight: 600;
+        }
+      }
+
+      .card_description, .card_category{
+        opacity: .8;
+      }
+    }
+  }
+
+  &_categories{
+    display: flex;
+    gap: 10px;
+  }
+}
+
+
+@media(max-width: 800px){
+  .notebook{
+    &_notes{
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media(max-width: 500px){
+  .notebook{
+    &_notes{
+      grid-template-columns: 1fr;
+    }
   }
 }

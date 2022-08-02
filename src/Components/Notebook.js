@@ -1,49 +1,45 @@
 import "./notebook.scss";
 import request from "../api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getNotes } from "../Redux/Actions/allData";
+import { Col, Row } from "react-bootstrap";
 
 export default function Notebook() {
+  const dispatch = useDispatch();
+  const { notes } = useSelector((state) => state.notes);
 
-  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getNotes());
+    
+  }, [dispatch]);
 
-  useEffect(()=>{
-    dispatch(getNotes())
-    console.log('clicked')
-  }, [dispatch])
+  const allNotes = notes.map((note) => (
+    <span className="note_title" key={note.id}>
+      {note.title}
+    </span>
+  ));
 
-  const notes = [
-    "Note100",
-    "Note1",
-    "Note1",
-    "Note1",
-    "Note1",
-    "Note1",
-    "Note1",
-    "Note1",
-    "Note1",
-    "Note1",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-    "Notes",
-  ];
-  const allNotes = notes.map((note, i) => (
+  const myCategories = notes.map(note=>{
+    return note.category
+  })
+  
+  const uniqueCategories = [...new Set(myCategories)]
+
+  const categories = uniqueCategories.map((note, i) => (
     <span className="note_title" key={i}>
       {note}
     </span>
+  ));
+
+  const cards = notes.map((note) => (
+    <div key={note.id} className="notebook_notes_card">
+      <span className="card_title">{note.title}</span>
+      <span className="card_description">{note.description}</span>
+      <span className="card_category">
+        <span className="card_category_span">Category:</span> {note.category}
+      </span>
+    </div>
   ));
 
   return (
@@ -59,7 +55,8 @@ export default function Notebook() {
           </div>
           <div className="notebook_sidebar_fixed">{allNotes}</div>
         </div>
-        <div className="notebook_notes">{allNotes}</div>
+        <div className="notebook_categories">{categories}</div>
+        <div className="notebook_notes">{cards}</div>
       </div>
     </>
   );

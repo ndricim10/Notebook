@@ -13,7 +13,6 @@ export const getNotes = () => async (dispatch) => {
       type: notes_success,
       payload: data
     });
-    console.log(data[0]);
   } catch (error) {
     dispatch({
         type: notes_fail,
