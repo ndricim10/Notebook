@@ -1,0 +1,28 @@
+{
+    "Notes": [
+        {
+            "id": 1,
+            "title": "My first title",
+            "description": "My first note description",
+            "category": "Sports"
+        },
+        {
+            "id": 2,
+            "title": "My second title",
+            "description": "My second note description",
+            "category": "To do list"
+        },
+        {
+            "id": 3,
+            "title": "My third title",
+            "description": "My third note description",
+            "category": "Gym"
+        },
+        {
+            "id": 4,
+            "title": "My fourth title",
+            "description": "My fourth note description",
+            "category": "Health"
+        }
+    ]
+}
