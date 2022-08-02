@@ -1,0 +1,60 @@
+.notebook {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 5px;
+  &_sidebar {
+    grid-column: 1/2;
+    position: relative;
+
+    &_searchBar{
+        position: sticky;
+        top: 0;
+        left: 0;
+        background-color: white;
+        z-index: 100;
+        height: 5vh;
+        padding-bottom: .5rem;
+        form{
+            height: 5vh;
+            display: flex;
+            gap: 1px;
+
+            input, button{
+                outline: none;
+                border: none;
+                border-radius: 5px;
+            }
+            input{
+                border: 1px solid;
+                width: 50%;
+                padding-inline: .5rem;
+            }
+            button{
+                height: 100%;
+                background-color: #0a64ec;
+                cursor: pointer;
+                color: white;
+                font-weight: 600;
+            }
+        }
+    }
+
+    &_fixed {
+        margin-top: 5vh;
+      position: fixed;
+      width: 24vw;
+      left: 0;
+      max-height: 90vh;
+      overflow-y: hidden;
+
+      &:hover{
+        overflow-y: scroll;
+      }
+    }
+  }
+
+  &_notes {
+    grid-column-start: 2;
+    border: 1px blue solid;
+  }
+}
