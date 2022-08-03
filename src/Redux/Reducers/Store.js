@@ -5,10 +5,11 @@ import {
   } from "redux";
   import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { getAllNotes } from "./NotesReducers";
+import { getAllNotes, getSingleNote } from "./NotesReducers";
 
 const reducer = combineReducers({
     notes: getAllNotes,
+    noteByID: getSingleNote
 })
 
 const store = createStore(
