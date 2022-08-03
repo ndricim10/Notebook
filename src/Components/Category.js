@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
 import "./notebook.scss";
 import { useDispatch, useSelector } from "react-redux";
-import {Link, useParams} from 'react-router-dom'
+import { Link, useParams } from "react-router-dom";
 import { getNoteByCategory } from "../Redux/Actions/allData";
 
 export default function Category({
@@ -12,23 +12,24 @@ export default function Category({
   searchQuery,
 }) {
   const dispatch = useDispatch();
-  const {categoryId} = useParams()
-  
-  useEffect(()=>{
-    dispatch(getNoteByCategory(categoryId))
-    
-  }, [dispatch, categoryId])
-  const {notes} = useSelector(state=>state.notesByCategory)
-  console.log(notes)
+  const { categoryId } = useParams();
+
+  useEffect(() => {
+    dispatch(getNoteByCategory(categoryId));
+  }, [dispatch, categoryId]);
+  const { notes } = useSelector((state) => state.notesByCategory);
+  console.log(notes);
 
   const cards = notes?.map((note) => (
     <div key={note.id} className="notebook_notes_card">
-      <span className="card_title">{note.title}</span>
+      <Link to={`/Notes/${note.id}`} className="a">
+        <span className="card_title">{note.title}</span>
+      </Link>
       <span className="card_description">{note.description}</span>
-      <Link to={`/category/${note.categoryId}`} className='a'>
-      <span className="card_category">
-        <span className="card_category_span">Category:</span> {note.category}
-      </span>
+      <Link to={`/category/${note.categoryId}`} className="a">
+        <span className="card_category">
+          <span className="card_category_span">Category:</span> {note.category}
+        </span>
       </Link>
     </div>
   ));

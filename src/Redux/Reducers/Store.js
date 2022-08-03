@@ -5,12 +5,13 @@ import {
   } from "redux";
   import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { getAllNotes, getNotesByCategory, getSingleNote } from "./NotesReducers";
+import { getAllNotes, getNotesByCategory, getNotesByCategoryName, getSingleNote } from "./NotesReducers";
 
 const reducer = combineReducers({
     notes: getAllNotes,
     noteByID: getSingleNote,
-    notesByCategory: getNotesByCategory
+    notesByCategory: getNotesByCategory,
+    notesByCategoryName: getNotesByCategoryName
 })
 
 const store = createStore(

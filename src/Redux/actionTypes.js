@@ -10,3 +10,11 @@ export const category_note_request = "category_note_request"
 export const category_note_success = "category_note_success"
 export const category_note_fail = "category_note_fail"
 
+export const name_category_note_request = "name_category_note_request"
+export const name_category_note_success = "name_category_note_success"
+export const name_category_note_fail = "name_category_note_fail"
+
+export const add_note_request = "add_note_request"
+export const add_note_success = "add_note_success"
+export const add_note_fail = "add_note_fail"
+

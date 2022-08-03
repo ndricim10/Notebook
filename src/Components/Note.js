@@ -11,7 +11,6 @@ export default function Note({
   handleChange,
   handleSubmit,
   searchQuery,
-  categories,
 }) {
   const dispatch = useDispatch();
   const { id } = useParams();
