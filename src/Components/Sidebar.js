@@ -1,6 +1,8 @@
 import React from "react";
 import "./notebook.scss";
+import '../index.css'
 import { AiFillHome } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export default function Sidebar({
   titles,
@@ -13,7 +15,11 @@ export default function Sidebar({
       <div className="notebook_sidebar">
         <div className="flex-column">
           <div className="notebook_sidebar_searchBar">
-            <AiFillHome />
+            <Link to='/' className="a">
+            <div className="home_page" >
+              <AiFillHome size={25} />
+            </div>
+            </Link>
             <form onSubmit={handleSubmit}>
               <input
                 type="search"

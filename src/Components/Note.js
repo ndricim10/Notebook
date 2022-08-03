@@ -4,6 +4,7 @@ import "./notebook.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getNoteById } from "../Redux/Actions/allData";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Note({
   titles,
@@ -36,10 +37,12 @@ export default function Note({
             <div className="notebook_notes_card">
               <span className="card_title">{note?.title}</span>
               <span className="card_description">{note?.description}</span>
-              <span className="card_category">
-                <span className="card_category_span">Category:</span>{" "}
-                {note?.category}
-              </span>
+              <Link to={`/category/${note?.categoryId}`} className="a">
+                <span className="card_category">
+                  <span className="card_category_span">Category:</span>{" "}
+                  {note?.category}
+                </span>
+              </Link>
             </div>
           </div>
         </div>

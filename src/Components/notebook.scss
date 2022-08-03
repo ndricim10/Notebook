@@ -32,6 +32,10 @@
     position: relative;
 
     &_searchBar {
+
+      .home_page{
+        cursor: pointer;
+      }
       position: sticky;
       top: 0;
       left: 0;
@@ -167,9 +171,24 @@
   }
 }
 
+.category{
+  .category_notes{
+    min-height: 70vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-self: center;
+    align-self: center;
+  }
+}
+
 @media (max-width: 800px) {
   .notebook {
     &_notes {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .category{
+    .category_notes{
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -179,6 +198,11 @@
   .notebook {
     &_notes {
       grid-template-columns: 1fr;
+    }
+  }
+  .category{
+    .category_notes{
+      grid-template-columns: 1fr 1fr;
     }
   }
 }
