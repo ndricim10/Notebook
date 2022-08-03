@@ -3,13 +3,13 @@
   grid-template-columns: 1fr 3fr;
   gap: 5px;
 
-  .my_note{
+  .my_note {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px red solid;
     flex-direction: column;
     gap: 10px;
+    min-height: 70vh;
   }
 
   &_notes,
@@ -24,6 +24,10 @@
   }
 
   &_sidebar {
+    .flex-column {
+      display: flex;
+      flex-direction: column;
+    }
     grid-column: 1/2;
     position: relative;
 
@@ -35,6 +39,9 @@
       z-index: 100;
       height: 5vh;
       padding-bottom: 0.5rem;
+      display: flex;
+      gap: 5px;
+      align-items: center;
       form {
         height: 5vh;
         display: flex;
@@ -62,7 +69,6 @@
     }
 
     &_fixed {
-      margin-top: 7vh;
       position: fixed;
       width: 24vw;
       left: 0;
@@ -79,6 +85,8 @@
         color: white;
         font-weight: 600;
         font-size: 1.1rem;
+        display: -webkit-box;
+        padding: .5rem;
       }
     }
   }
@@ -88,40 +96,41 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-    
-    &_card{
+
+    &_card {
       display: flex;
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
 
-      .card_title{
+      .card_title {
         font-weight: 700;
         font-size: 1.2rem;
       }
 
-      .card_category{
-        &_span{
+      .card_category {
+        &_span {
           font-weight: 600;
         }
       }
 
-      .card_description, .card_category{
-        opacity: .8;
+      .card_description,
+      .card_category {
+        opacity: 0.8;
       }
     }
   }
 
-  &_categories{
+  &_categories {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     overflow-x: auto;
-    padding: .1rem;
+    padding: 0.1rem;
 
-    .category_title{
-      padding: .5rem;
+    .category_title {
+      padding: 0.5rem;
       background-color: chocolate;
       color: white;
       font-weight: 700;
@@ -130,22 +139,45 @@
     }
   }
 }
-.my_notes{
+.my_notes {
   position: relative;
 }
 
+.single_note {
+  .notebook {
+    &_notes {
+      &_card {
+        padding: 0.5rem;
+        cursor: unset;
 
-@media(max-width: 800px){
-  .notebook{
-    &_notes{
+        .card_title {
+          font-size: 2rem;
+        }
+
+        .card_description,
+        .card_category {
+          font-size: 1.5rem;
+          opacity: 0.5;
+        }
+        .card_category_span {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .notebook {
+    &_notes {
       grid-template-columns: 1fr 1fr;
     }
   }
 }
 
-@media(max-width: 500px){
-  .notebook{
-    &_notes{
+@media (max-width: 500px) {
+  .notebook {
+    &_notes {
       grid-template-columns: 1fr;
     }
   }

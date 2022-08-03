@@ -22,23 +22,25 @@ export default function Note({
 
   return (
     <>
-      <div className="notebook">
-        <Sidebar
-          titles={titles}
-          handleSubmit={handleSubmit}
-          searchQuery={searchQuery}
-          handleChange={handleChange}
-        />
+      <div className="single_note">
+        <div className="notebook">
+          <Sidebar
+            titles={titles}
+            handleSubmit={handleSubmit}
+            searchQuery={searchQuery}
+            handleChange={handleChange}
+          />
 
-        <div className="my_note">
-          <div className="notebook_categories">{categories}</div>
-          <div className="notebook_notes_card">
-            <span className="card_title">{note?.title}</span>
-            <span className="card_description">{note?.description}</span>
-            <span className="card_category">
-              <span className="card_category_span">Category:</span>{" "}
-              {note?.category}
-            </span>
+          <div className="my_note">
+            {/* <div className="notebook_categories">{categories}</div> */}
+            <div className="notebook_notes_card">
+              <span className="card_title">{note?.title}</span>
+              <span className="card_description">{note?.description}</span>
+              <span className="card_category">
+                <span className="card_category_span">Category:</span>{" "}
+                {note?.category}
+              </span>
+            </div>
           </div>
         </div>
       </div>

@@ -1,11 +1,19 @@
 import React from "react";
-import './notebook.scss'
+import "./notebook.scss";
+import { AiFillHome } from "react-icons/ai";
 
-export default function Sidebar({ titles, handleSubmit, searchQuery, handleChange }) {
+export default function Sidebar({
+  titles,
+  handleSubmit,
+  searchQuery,
+  handleChange,
+}) {
   return (
     <>
       <div className="notebook_sidebar">
+        <div className="flex-column">
           <div className="notebook_sidebar_searchBar">
+            <AiFillHome />
             <form onSubmit={handleSubmit}>
               <input
                 type="search"
@@ -15,10 +23,11 @@ export default function Sidebar({ titles, handleSubmit, searchQuery, handleChang
               />
               <button>Search</button>
             </form>
-            <h3>All Notes</h3>
           </div>
-          <div className="notebook_sidebar_fixed">{titles}</div>
+          <h3>All Notes</h3>
         </div>
+        <div className="notebook_sidebar_fixed">{titles}</div>
+      </div>
     </>
   );
 }

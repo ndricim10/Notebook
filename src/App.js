@@ -15,6 +15,7 @@ function App() {
   }, [dispatch]);
 
   const [searchQuery, setSearchQuery] = useState("");
+
   const titles = notes
     .filter((note) => {
       return (
@@ -25,7 +26,7 @@ function App() {
     .map((note) => (
       <Link to={`/notes/${note.id}`} className="note_title a">
         <span className="note_title" key={note.id}>
-          {note.title}
+          {note.title.length < 25 ? note.title : note.title.substring(0, 25)+ `...`}
         </span>
       </Link>
     ));
