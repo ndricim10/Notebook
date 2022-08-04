@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import AddNote from "./AddNote";
-import { addNote } from "../Redux/Actions/allData";
+
 
 export default function Notebook({
   titles,
@@ -13,10 +13,20 @@ export default function Notebook({
   handleSubmit,
   searchQuery,
   categories,
-  cards,
+  notes
 }) {
   const dispatch = useDispatch();
- 
+  const cards = notes.map((note) => (
+    <div key={note.id} className="notebook_notes_card">
+      <span className="card_title">{note.title}</span>
+      <span className="card_description">{note.description}</span>
+      <Link to={`/category/${note.categoryId}`} className='a'>
+      <span className="card_category">
+        <span className="card_category_span">Category:</span> {note.category}
+      </span>
+      </Link>
+    </div>
+  ));
 
 
   return (

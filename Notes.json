@@ -139,24 +139,6 @@
       "description": "My fifth note description",
       "category": "To do list",
       "categoryId": "todolist"
-    },
-    {
-      "id": 21
-    },
-    {
-      "id": 22
-    },
-    {
-      "id": 23
-    },
-    {
-      "id": 24
-    },
-    {
-      "id": 25
-    },
-    {
-      "id": 26
     }
   ]
 }

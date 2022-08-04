@@ -45,17 +45,7 @@ function App() {
     </span>
   ));
 
-  const cards = notes.map((note) => (
-    <div key={note.id} className="notebook_notes_card">
-      <span className="card_title">{note.title}</span>
-      <span className="card_description">{note.description}</span>
-      <Link to={`/category/${note.categoryId}`} className='a'>
-      <span className="card_category">
-        <span className="card_category_span">Category:</span> {note.category}
-      </span>
-      </Link>
-    </div>
-  ));
+  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -80,7 +70,6 @@ function App() {
                 handleSubmit={handleSubmit}
                 searchQuery={searchQuery}
                 categories={categories}
-                cards={cards}
               />
             }
           />
