@@ -12,10 +12,10 @@ export default function Notebook({
   handleChange,
   handleSubmit,
   searchQuery,
-  categories,
   notes
 }) {
   const dispatch = useDispatch();
+  
   const cards = notes.map((note) => (
     <div key={note.id} className="notebook_notes_card">
       <span className="card_title">{note.title}</span>
@@ -28,7 +28,18 @@ export default function Notebook({
     </div>
   ));
 
+  const myCategories = notes.map((note) => {
+    return note.category;
+  });
 
+  const uniqueCategories = [...new Set(myCategories)];
+
+  const categories = uniqueCategories.map((note, i) => (
+    <span className="category_title" key={i}>
+      {note}
+    </span>
+  ));
+  
   return (
     <>
       <div className="notebook">

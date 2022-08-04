@@ -33,23 +33,8 @@ function App() {
       </Link>
     ));
 
-  const myCategories = notes.map((note) => {
-    return note.category;
-  });
-
-  const uniqueCategories = [...new Set(myCategories)];
-
-  const categories = uniqueCategories.map((note, i) => (
-    <span className="category_title" key={i}>
-      {note}
-    </span>
-  ));
-
-  
-
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(searchQuery);
   }
   function handleChange(e) {
     setSearchQuery(e.target.value);
@@ -66,10 +51,7 @@ function App() {
               <Notebook
                 notes={notes}
                 titles={titles}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
                 searchQuery={searchQuery}
-                categories={categories}
               />
             }
           />
