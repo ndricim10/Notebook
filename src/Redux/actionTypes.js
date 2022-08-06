@@ -22,3 +22,7 @@ export const edit_note_request = "edit_note_request"
 export const edit_note_success = "edit_note_success"
 export const edit_note_fail = "edit_note_fail"
 
+export const delete_note_request = "delete_note_request"
+export const delete_note_success = "delete_note_success"
+export const delete_note_fail = "delete_note_fail"
+

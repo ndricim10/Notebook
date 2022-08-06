@@ -1,5 +1,5 @@
 import request from "../../api";
-import { add_note_fail, add_note_request, add_note_success, category_note_fail, category_note_request, category_note_success, edit_note_fail, edit_note_request, edit_note_success, name_category_note_fail, name_category_note_request, name_category_note_success, notes_fail, notes_request, notes_success, single_note_fail, single_note_request, single_note_success } from "../actionTypes";
+import { add_note_fail, add_note_request, add_note_success, category_note_fail, category_note_request, category_note_success, delete_note_fail, delete_note_request, delete_note_success, edit_note_fail, edit_note_request, edit_note_success, name_category_note_fail, name_category_note_request, name_category_note_success, notes_fail, notes_request, notes_success, single_note_fail, single_note_request, single_note_success } from "../actionTypes";
 
 export const getNotes = () => async (dispatch) => {
   try {
@@ -151,6 +151,28 @@ export const editNote = (id, title, description, category, categoryId) => async 
   } catch (error) {
     dispatch({
         type: edit_note_fail
+    })
+    console.log(error);
+  }
+};
+
+export const deleteNote = (id, title, description, category, categoryId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: delete_note_request,
+    });
+
+    const { data } = await request.delete(`/Notes/${id}`);
+
+    dispatch({
+      type: delete_note_success
+    });
+    setTimeout(()=>{
+      dispatch(getNotes())
+    }, 100)
+  } catch (error) {
+    dispatch({
+        type: delete_note_fail
     })
     console.log(error);
   }

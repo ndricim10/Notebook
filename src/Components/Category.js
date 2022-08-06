@@ -3,8 +3,8 @@ import Sidebar from "./Sidebar";
 import "./notebook.scss";
 import "../index.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { getNoteByCategory } from "../Redux/Actions/allData";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { deleteNote, getNoteByCategory } from "../Redux/Actions/allData";
 import { AiOutlineEdit, AiFillDelete } from "react-icons/ai";
 
 export default function Category({
@@ -15,6 +15,7 @@ export default function Category({
   all_notes,
 }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { categoryId } = useParams();
   const [showButtons, setShowButtons] = useState(false);
   function showTrueButtons() {
@@ -28,11 +29,19 @@ export default function Category({
     return note.categoryId === categoryId;
   });
 
+ 
+
   useEffect(() => {
     dispatch(getNoteByCategory(categoryId));
   }, [dispatch, categoryId]);
   const { notes } = useSelector((state) => state.notesByCategory);
-  console.log(notes);
+
+  function handleDelete(id){
+    dispatch(deleteNote(id))
+    if(isNaN(notes)){
+      navigate(`../`);
+    }
+  }
 
   const cards = notes?.map((note) => (
     <div
@@ -42,7 +51,7 @@ export default function Category({
       onMouseLeave={showFalseButtons}
     >
       {showButtons && (
-        <div className="delete">
+        <div className="delete" onClick={()=>handleDelete(note.id)}>
           <AiFillDelete size={30} />
         </div>
       )}

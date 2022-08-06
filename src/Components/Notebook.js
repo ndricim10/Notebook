@@ -6,6 +6,8 @@ import AddNote from "./AddNote";
 import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
 import EmptyNote from "./EmptyNote";
+import { useDispatch } from "react-redux";
+import { deleteNote } from "../Redux/Actions/allData";
 
 export default function Notebook({
   titles,
@@ -18,6 +20,7 @@ export default function Notebook({
   handleFalseAddNote,
 }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const [showButtons, setShowButtons] = useState(false);
 
@@ -36,7 +39,7 @@ export default function Notebook({
       onMouseLeave={showFalseButtons}
     >
       {showButtons && (
-        <div className="delete">
+        <div className="delete" onClick={()=>dispatch(deleteNote(note.id))}>
           <AiFillDelete size={30} />
         </div>
       )}
