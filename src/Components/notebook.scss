@@ -32,8 +32,7 @@
     position: relative;
 
     &_searchBar {
-
-      .home_page{
+      .home_page {
         cursor: pointer;
       }
       position: fixed;
@@ -91,7 +90,7 @@
         font-weight: 600;
         font-size: 1.1rem;
         display: -webkit-box;
-        padding: .5rem;
+        padding: 0.5rem;
       }
     }
   }
@@ -172,8 +171,8 @@
   }
 }
 
-.category{
-  .category_notes{
+.category {
+  .category_notes {
     margin-top: 15vh;
     min-height: 70vh;
     display: grid;
@@ -182,14 +181,16 @@
   }
 }
 
-.right-section{
+.right-section {
   position: relative;
   margin-top: 10vh;
-  .notebook_categories{
+  .notebook_categories {
     margin-block: 1vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
-  
-  .add-note{
+
+  .add-note {
     position: fixed;
     background-color: chocolate;
     min-height: 40vh;
@@ -198,7 +199,7 @@
     top: 0;
     padding: 1rem;
   }
-  .addNote{
+  .addNote {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -206,41 +207,47 @@
   }
 }
 
-
-
 @media (max-width: 800px) {
   .notebook {
     &_notes {
       grid-template-columns: 1fr 1fr;
     }
-    &_searchBar{
-    form{
-      input{
-        width: 100%;
+    &_searchBar {
+      form {
+        input {
+          width: 100%;
+        }
+      }
+    }
+    .right-section {
+      .notebook_categories {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   }
-  }
-  .category{
-    .category_notes{
+  .category {
+    .category_notes {
       grid-template-columns: 1fr 1fr;
     }
   }
-  button{
+  button {
     display: none;
   }
-  
 }
 
 @media (max-width: 500px) {
-  
   .notebook {
     &_notes {
       grid-template-columns: 1fr;
     }
+    .right-section {
+      .notebook_categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   }
-  .category{
-    .category_notes{
+  .category {
+    .category_notes {
       grid-template-columns: 1fr;
     }
   }

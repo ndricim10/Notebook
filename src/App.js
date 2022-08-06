@@ -11,8 +11,11 @@ function App() {
   const { notes } = useSelector((state) => state.notes);
   const dispatch = useDispatch();
 
+  const [addNoteState, setAddNoteState] = useState(false)
+
   useEffect(() => {
     dispatch(getNotes());
+    console.log("notes", notes)
   }, [dispatch]);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -41,6 +44,14 @@ function App() {
     setSearchQuery(e.target.value);
   }
 
+  function handleTrueAddNote(){
+    setAddNoteState(true)
+  }
+
+  function handleFalseAddNote(){
+    setAddNoteState(false)
+  }
+
   return (
     <>
       <Router>
@@ -53,6 +64,9 @@ function App() {
                 notes={notes}
                 titles={titles}
                 searchQuery={searchQuery}
+                AddNoteState={addNoteState}
+                handleTrueAddNote={handleTrueAddNote}
+                handleFalseAddNote={handleFalseAddNote}
               />
             }
           />
