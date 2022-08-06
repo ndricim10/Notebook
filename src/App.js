@@ -10,6 +10,7 @@ import Category from "./Components/Category";
 function App() {
   const { notes } = useSelector((state) => state.notes);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getNotes());
   }, [dispatch]);
@@ -19,16 +20,16 @@ function App() {
   const titles = notes
     .filter((note) => {
       return (
-        note.title.toLowerCase().match(searchQuery.toLocaleLowerCase()) ||
-        note.description.toLowerCase().match(searchQuery.toLocaleLowerCase())
+        note?.title?.toLowerCase().match(searchQuery?.toLowerCase()) ||
+        note?.description?.toLowerCase().match(searchQuery?.toLowerCase())
       );
     })
     .map((note) => (
       <Link to={`/notes/${note.id}`} className="note_title a">
         <span className="note_title" key={note.id}>
-          {note.title.length < 25
-            ? note.title
-            : note.title.substring(0, 25) + `...`}
+          {note?.title.length < 25
+            ? note?.title
+            : note?.title.substring(0, 25) + `...`}
         </span>
       </Link>
     ));

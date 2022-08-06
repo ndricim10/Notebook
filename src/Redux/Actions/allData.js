@@ -94,29 +94,30 @@ export const getNoteByCategoryName = (category) => async (dispatch) => {
   }
 };
 
-export const addNote = (id, title, description, category, categoryId) => async (dispatch) => {
+export const addNote = (title, description, category, categoryId) => async (dispatch) => {
   try {
     dispatch({
       type: add_note_request,
     });
 
     const obj = {
-      id: id,
       title: title,
-      description, category,
+      description: description,
+      category: category,
       categoryId: categoryId
     }
 
     const { data } = await request.post("/Notes", obj);
 
     dispatch({
-      type: add_note_success,
-      payload: data
+      type: add_note_success
     });
+    setTimeout(()=>{
+      dispatch(getNotes())
+    }, 100)
   } catch (error) {
     dispatch({
-        type: add_note_fail,
-        payload:error
+        type: add_note_fail
     })
     console.log(error);
   }
