@@ -22,16 +22,16 @@ function App() {
   const titles = notes
     .filter((note) => {
       return (
-        note?.title?.toLowerCase().match(searchQuery?.toLowerCase()) ||
-        note?.description?.toLowerCase().match(searchQuery?.toLowerCase())
+        note.title.toLowerCase().match(searchQuery.toLowerCase()) ||
+        note.description.toLowerCase().match(searchQuery.toLowerCase())
       );
     })
     .map((note) => (
       <Link to={`/notes/${note.id}`} className="note_title a">
         <span className="note_title" key={note.id}>
-          {note?.title.length < 25
-            ? note?.title
-            : note?.title.substring(0, 25) + `...`}
+          {note.title.length < 25
+            ? note.title
+            : note.title.substring(0, 25) + `...`}
         </span>
       </Link>
     ));

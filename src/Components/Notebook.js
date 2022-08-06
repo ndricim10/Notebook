@@ -19,10 +19,9 @@ export default function Notebook({
   handleTrueAddNote,
   handleFalseAddNote,
 }) {
-  const navigate = useNavigate();
-  const dispatch = useDispatch()
-
-  const [showButtons, setShowButtons] = useState(false);
+  const navigate = useNavigate(),
+    dispatch = useDispatch(),
+    [showButtons, setShowButtons] = useState(false);
 
   function showTrueButtons() {
     setShowButtons(true);
@@ -39,7 +38,7 @@ export default function Notebook({
       onMouseLeave={showFalseButtons}
     >
       {showButtons && (
-        <div className="delete" onClick={()=>dispatch(deleteNote(note.id))}>
+        <div className="delete" onClick={() => dispatch(deleteNote(note.id))}>
           <AiFillDelete size={30} />
         </div>
       )}
