@@ -7,7 +7,11 @@ export const getNotes = () => async (dispatch) => {
       type: notes_request,
     });
 
-    const { data } = await request("/Notes");
+    const { data } = await request("/Notes",
+    {params:{
+      _sort: "publishedAt",
+      _order: "desc"
+    }});
 
     dispatch({
       type: notes_success,
@@ -34,7 +38,6 @@ export const getNoteById = (id) => async (dispatch) => {
       type: single_note_success,
       payload: data
     });
-    console.log(data)
   } catch (error) {
     dispatch({
         type: single_note_fail,
@@ -94,7 +97,7 @@ export const getNoteByCategoryName = (category) => async (dispatch) => {
   }
 };
 
-export const addNote = (title, description, category, categoryId) => async (dispatch) => {
+export const addNote = (title, description, category, categoryId, publishedAt) => async (dispatch) => {
   try {
     dispatch({
       type: add_note_request,
@@ -104,7 +107,8 @@ export const addNote = (title, description, category, categoryId) => async (disp
       title: title,
       description: description,
       category: category,
-      categoryId: categoryId
+      categoryId: categoryId,
+      publishedAt: publishedAt
     }
 
     const { data } = await request.post("/Notes", obj);

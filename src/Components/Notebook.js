@@ -3,9 +3,9 @@ import Sidebar from "./Sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import AddNote from "./AddNote";
-import { AiOutlineEdit, AiFillDelete } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
-import EditNote from "./EditNote";
+import EmptyNote from "./EmptyNote";
 
 export default function Notebook({
   titles,
@@ -20,8 +20,6 @@ export default function Notebook({
   const navigate = useNavigate();
 
   const [showButtons, setShowButtons] = useState(false);
-
-  const [showEditButton, setShowEditButton] = useState(false);
 
   function showTrueButtons() {
     setShowButtons(true);
@@ -75,31 +73,41 @@ export default function Notebook({
 
   return (
     <>
-      <div className="notebook">
-        <Sidebar
-          titles={titles}
-          handleSubmit={handleSubmit}
-          searchQuery={searchQuery}
-          handleChange={handleChange}
-        />
-        <div className="right-section">
-          {AddNoteState && (
-            <div className="add-note">
-              <AddNote
-                handleFalseAddNote={handleFalseAddNote}
-                handleTrueAddNote={handleTrueAddNote}
-              />
-              <div className="space-form"></div>
-            </div>
-          )}
+      {notes.length > 0 ? (
+        <div className="notebook">
+          <Sidebar
+            titles={titles}
+            handleSubmit={handleSubmit}
+            searchQuery={searchQuery}
+            handleChange={handleChange}
+          />
+          <div className="right-section">
+            {AddNoteState && (
+              <div className="add-note">
+                <AddNote
+                  notes={notes}
+                  handleFalseAddNote={handleFalseAddNote}
+                  handleTrueAddNote={handleTrueAddNote}
+                />
+                <div className="space-form"></div>
+              </div>
+            )}
 
-          <div className="addNote" onClick={handleTrueAddNote}>
-            <AiOutlinePlusCircle size={40} />
+            <div className="addNote" onClick={handleTrueAddNote}>
+              <AiOutlinePlusCircle size={40} />
+            </div>
+            <div className="notebook_categories">{categories}</div>
+            <div className="notebook_notes">{cards}</div>
           </div>
-          <div className="notebook_categories">{categories}</div>
-          <div className="notebook_notes">{cards}</div>
         </div>
-      </div>
+      ) : (
+        <EmptyNote
+          notes={notes}
+          AddNoteState={AddNoteState}
+          handleTrueAddNote={handleTrueAddNote}
+          handleFalseAddNote={handleFalseAddNote}
+        />
+      )}
     </>
   );
 }

@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./addNote.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addNote } from "../Redux/Actions/allData";
 import {IoMdRemoveCircleOutline} from 'react-icons/io'
+import moment from "moment";
 
-export default function AddNote({handleFalseAddNote, handleTrueAddNote}) {
+export default function AddNote({handleFalseAddNote, notes}) {
   const dispatch = useDispatch();
   const [myTitle, setMyTitle] = useState("");
   const [myCategoryName, setMyCategoryName] = useState("");
   const [myDescription, setMyDescription] = useState("");
   const [myCategoryId, setMyCategoryId] = useState("");
+  const [publishedAt, setPublishedAt] = useState(null)
 
+useEffect(()=>{
+  let date = new Date
+  setPublishedAt(moment(date).format())
+}, [notes])
   function add_note(e) {
     e.preventDefault();
     if (
@@ -21,12 +27,14 @@ export default function AddNote({handleFalseAddNote, handleTrueAddNote}) {
     ) {
       alert("each field is required");
     } else {
-      dispatch(addNote(myTitle, myDescription, myCategoryName, myCategoryId));
+      
+      dispatch(addNote(myTitle, myDescription, myCategoryName, myCategoryId, publishedAt));
       setMyCategoryId("")
       setMyTitle("")
       setMyCategoryName("")
       setMyDescription("")
       handleFalseAddNote()
+      console.log("published",publishedAt)
     }
   }
 

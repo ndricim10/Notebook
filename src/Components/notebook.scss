@@ -124,6 +124,8 @@
 
     &_card {
       position: relative;
+      width: max-content;
+      padding: .5rem;
       display: flex;
       flex-direction: column;
       gap: 5px;
@@ -132,7 +134,7 @@
       .delete {
         position: absolute;
         border: unset;
-        right: 0;
+        right: 0.2rem;
         display: flex;
         flex-direction: column;
         gap: 5px;
@@ -236,6 +238,16 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.empty{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  height: 100vh;
 }
 .right-section {
   position: relative;
