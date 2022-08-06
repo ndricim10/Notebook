@@ -3,7 +3,28 @@
   grid-template-columns: 1fr 3fr;
   gap: 5px;
 
+  .buttons {
+    display: flex;
+    gap: 10px;
+
+    span {
+      padding: .5rem;
+      border-radius: 5px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .span-edit{
+      background-color: rgb(51, 51, 234);
+    }
+    .span-delete{
+      background-color: red;
+    }
+  }
+
   .my_note {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,10 +123,22 @@
     gap: 10px;
 
     &_card {
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
+
+      .delete {
+        position: absolute;
+        border: unset;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        color: red;
+      }
 
       .card_title {
         font-weight: 700;
@@ -148,6 +181,7 @@
 }
 
 .single_note {
+  position: relative;
   .notebook {
     &_notes {
       &_card {
@@ -172,15 +206,37 @@
 }
 
 .category {
-  .category_notes {
-    margin-top: 15vh;
-    min-height: 70vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 10px;
+  .categories {
+    margin-top: 7vh;
+    .active {
+      width: unset;
+      display: flex;
+      justify-content: center;
+    }
+    .category_notes {
+      min-height: 70vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      row-gap: 10px;
+    }
   }
 }
 
+.add-note {
+  position: fixed;
+  background-color: chocolate;
+  min-height: 40vh;
+  width: 50%;
+  z-index: 999999;
+  top: 0;
+  padding: 1rem;
+}
+.addNote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 .right-section {
   position: relative;
   margin-top: 10vh;
@@ -190,21 +246,7 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .add-note {
-    position: fixed;
-    background-color: chocolate;
-    min-height: 40vh;
-    width: 50%;
-    z-index: 999999;
-    top: 0;
-    padding: 1rem;
-  }
-  .addNote {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
+  
 }
 
 @media (max-width: 800px) {

@@ -15,7 +15,6 @@ function App() {
 
   useEffect(() => {
     dispatch(getNotes());
-    console.log("notes", notes)
   }, [dispatch]);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -49,7 +48,7 @@ function App() {
   }
 
   function handleFalseAddNote(){
-    setAddNoteState(false)
+    addNoteState && setAddNoteState(false)
   }
 
   return (
@@ -91,6 +90,7 @@ function App() {
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
                 searchQuery={searchQuery}
+                all_notes={notes}
               />
             }
           />

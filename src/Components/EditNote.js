@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import "./addNote.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { addNote } from "../Redux/Actions/allData";
+import { addNote, editNote } from "../Redux/Actions/allData";
 import {IoMdRemoveCircleOutline} from 'react-icons/io'
 
-export default function AddNote({handleFalseAddNote, handleTrueAddNote}) {
+export default function EditNote({note, setShowEdit}) {
   const dispatch = useDispatch();
   const [myTitle, setMyTitle] = useState("");
   const [myCategoryName, setMyCategoryName] = useState("");
   const [myDescription, setMyDescription] = useState("");
   const [myCategoryId, setMyCategoryId] = useState("");
 
-  function add_note(e) {
+  function edit_note(e) {
     e.preventDefault();
     if (
       myTitle.length === 0 ||
@@ -21,18 +21,18 @@ export default function AddNote({handleFalseAddNote, handleTrueAddNote}) {
     ) {
       alert("each field is required");
     } else {
-      dispatch(addNote(myTitle, myDescription, myCategoryName, myCategoryId));
+      dispatch(editNote(note.id, myTitle, myDescription, myCategoryName, myCategoryId));
       setMyCategoryId("")
       setMyTitle("")
       setMyCategoryName("")
       setMyDescription("")
-      handleFalseAddNote()
+      setShowEdit(false)
     }
   }
 
   return (
     <div className="add_note">
-      <div className="remove" onClick={handleFalseAddNote}>
+      <div className="remove" onClick={()=>setShowEdit(false)}>
         <IoMdRemoveCircleOutline size={30}/>
       </div>
       <form action="">
@@ -41,7 +41,7 @@ export default function AddNote({handleFalseAddNote, handleTrueAddNote}) {
         <textarea value={myDescription} onChange={(e)=>setMyDescription(e.target.value)} placeholder="Note's description" rows="10"></textarea>
         <input type="text" value={myCategoryId} onChange={(e)=>setMyCategoryId(e.target.value)} placeholder="Note's Category ID" />
         <div className="btn">
-          <button onClick={add_note}>Add Note</button>
+          <button onClick={edit_note}>Edit Note</button>
         </div>
       </form>
     </div>

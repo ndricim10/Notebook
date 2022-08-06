@@ -1,5 +1,12 @@
 .add_note {
+    .remove{
+        position: absolute;
+        right: .5rem;
+        color: white;
+        cursor: pointer;
+    }
   form {
+    padding-top: 7vh;
     display: flex;
     flex-direction: column;
     gap: 10px;

@@ -18,3 +18,7 @@ export const add_note_request = "add_note_request"
 export const add_note_success = "add_note_success"
 export const add_note_fail = "add_note_fail"
 
+export const edit_note_request = "edit_note_request"
+export const edit_note_success = "edit_note_success"
+export const edit_note_fail = "edit_note_fail"
+
