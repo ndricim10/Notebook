@@ -147,6 +147,7 @@ export const editNote = (id, title, description, category, categoryId) => async 
     });
     setTimeout(()=>{
       dispatch(getNotes())
+      dispatch(getNoteById(id))
     }, 100)
   } catch (error) {
     dispatch({
